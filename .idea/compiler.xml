@@ -12,5 +12,8 @@
         <module name="servlet001" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="servlet003" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
