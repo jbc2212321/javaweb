@@ -16,6 +16,7 @@ public class ChangguanMgr {
         for (Changguan changguan:changguans){
             if (changguan.getCount()==count){
                 changguan.setCgName(edit_changguan.getCgName());
+                changguan.setUserName(edit_changguan.getUserName());
                 changguan.setPhone(edit_changguan.getPhone());
                 changguan.setAddress(edit_changguan.getAddress());
                 changguan.setDescAddress(edit_changguan.getDescAddress());

@@ -18,19 +18,19 @@
             <el-input v-model="cgName"></el-input>
         </el-form-item>
 
-        <el-form-item label="联系电话" prop="name">
+        <el-form-item label="联系电话" prop="phone">
             <el-input v-model="phone"></el-input>
         </el-form-item>
 
-        <el-form-item label="联系人" prop="name">
+        <el-form-item label="联系人" prop="userName">
             <el-input v-model="userName"></el-input>
         </el-form-item>
 
         <el-form-item label="所在地区" prop="region">
             <el-select v-model="address" placeholder="请选择活动区域">
-                <el-option label="湖南省/长沙市/岳麓区" value="yuelu"></el-option>
-                <el-option label="湖南省/长沙市/天心区" value="tianxing"></el-option>
-                <el-option label="湖南省/长沙市/雨花区" value="yuhua"></el-option>
+                <el-option label="湖南省/长沙市/岳麓区" value="岳麓区"></el-option>
+                <el-option label="湖南省/长沙市/天心区" value="天心区"></el-option>
+                <el-option label="湖南省/长沙市/雨花区" value="雨花区"></el-option>
             </el-select>
         </el-form-item>
         <el-form-item label="详细地址" prop="desc">
@@ -66,7 +66,7 @@
             submitForm:function () {
                 var qs = Qs
                 // 配置post的请求头
-                axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
+                axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
                 axios.post('http://localhost:8080/s3/edit',qs.stringify({
                     count:this.count,
                     cgName: this.cgName,

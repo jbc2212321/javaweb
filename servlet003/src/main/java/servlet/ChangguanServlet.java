@@ -23,8 +23,8 @@ public class ChangguanServlet extends HttpServlet {
         HttpSession session = (HttpSession) req.getSession();
         String count = req.getParameter("count");
         String cgName= req.getParameter("cgName");
-        String phone= req.getParameter("phone");
-        String userName= req.getParameter("userName");
+        String phone= req.getParameter("userName");
+        String userName= req.getParameter("phone");
         String address= req.getParameter("address");
         String descAddress= req.getParameter("descAddress");
         String desc= req.getParameter("desc");
@@ -32,7 +32,7 @@ public class ChangguanServlet extends HttpServlet {
         Changguan changguan=new Changguan(Integer.parseInt(count),cgName,phone,userName,address,descAddress);
         System.out.println(changguan);
         changguans= (List<Changguan>) session.getAttribute("cglist");
-        changguans=ChangguanMgr.edit(changguans,Integer.parseInt(count),changguan);
+        ChangguanMgr.edit(changguans, Integer.parseInt(count), changguan);
         session.removeAttribute("cglist");
         session.setAttribute("cglist",changguans);
         resp.sendRedirect("/s3/changguanlist.jsp");
