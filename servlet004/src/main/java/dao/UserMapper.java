@@ -1,8 +1,10 @@
 package dao;
 
+import org.apache.ibatis.annotations.Param;
 import pojo.User;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserMapper {
     List<User> getUserList();
@@ -18,4 +20,11 @@ public interface UserMapper {
 
     //删除用户
     void deleteUserById(int id);
+
+    List<Map<Object, Object>>getAll();
+
+    void delete(@Param("id")String id);
+
+
+
 }

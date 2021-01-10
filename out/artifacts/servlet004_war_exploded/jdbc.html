@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+    <el-button @click="get">显示数据</el-button>
+    <el-table
+            :data="tableData"
+            style="width: 100%">
+        <el-table-column
+                prop="courseID"
+                label="课程编号"
+                width="180">
+        </el-table-column>
+        <el-table-column
+                prop="courseName"
+                label="课程名字"
+                width="180">
+        </el-table-column>
+        <el-table-column
+                prop="courseType"
+                label="课程类型">
+        </el-table-column>
+        <el-table-column
+                prop="credit"
+                label="课程学分">
+        </el-table-column>
+        <el-table-column
+                prop="hour"
+                label="课程学时">
+        </el-table-column>
+        <!--            <el-table-column-->
+        <!--                    prop="delete"-->
+        <!--                    label="删除">-->
+        <!--            </el-table-column>-->
+        <el-table-column label="操作">
+            <template slot-scope="scope">
+                <el-button
+                        size="mini"
+                        type="danger"
+                        @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+            </template>
+        </el-table-column>
+    </el-table>
+
+</div>
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.0/axios.js"></script>
+<script src="https://cdn.bootcss.com/qs/6.7.0/qs.min.js"></script>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            allData: "",
+            tableData: [
+                {
+                    "courseID":"CS3501",
+                    "courseName":"JavaEE Application and Development",
+                    "courseType":"选修课",
+                    "credit": 3,
+                    "hour":32
+                }
+            ],
+        },
+        mounted() {
+            // axios({
+            //     method: "get",
+            //     url: "http://localhost:8080/s4/getList"
+            // }).then(res => {
+            //     var data=res.data
+            //     console.log(typeof res.data)
+            //     this.allData = res.data.substr(1,data.length-2)
+            //     console.log(res.data.substr(1,data.length-2))
+            //     this.tableData = JSON.parse(res.data.substr(1,data.length-2));
+            //
+            //
+            // })
+        },
+        methods: {
+            get: function () {
+                axios({
+                    method: "get",
+                    url: "http://localhost:8080/s4/getList"
+                }).then(res => {
+                    this.allData = res.data
+                    console.log(res.data)
+                    console.log("tabledata:", this.tableData)
+                })
+            },
+            handleDelete:function () {
+                axios({
+                    method: "get",
+                    url: "http://localhost:8080/s4/delete"
+                }).then(res => {
+
+                })
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -6,6 +6,7 @@ import pojo.User;
 import utils.MybatisUtils;
 
 import java.util.List;
+import java.util.Map;
 
 public class test {
 
@@ -18,8 +19,8 @@ public class test {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
         System.out.println(userMapper.getUserByID(1));
-//        sqlSession.commit();
-//        sqlSession.close();
+        sqlSession.commit();
+        sqlSession.close();
     }
 
     @Test
@@ -77,4 +78,17 @@ public class test {
         sqlSession.commit();
         sqlSession.close();
     }
+    @Test
+    public void getAll(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        List<Map<Object, Object>>mapList=userMapper.getAll();
+        for(Map<Object, Object>map:mapList){
+            System.out.println(map);
+        }
+        sqlSession.commit();
+        sqlSession.close();
+    }
+
+
 }
